@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Trace for Batch {{ batch_id }}{% endblock %}
+
+{% block content %}
+  <h2>🌿 Herb Journey for Batch: {{ batch_id }}</h2>
+  <p>This is the complete, simulated blockchain history for your product, from farm to shelf.</p>
+  <hr>
+  
+  <div class="chain-container">
+    {% for block in blocks %}
+      <div class="chain-block">
+        <h3>Step {{ loop.index }}: <strong>{{ block.action }}</strong></h3>
+        <p><strong>Timestamp:</strong> {{ block.timestamp.strftime('%Y-%m-%d %H:%M:%S') }} UTC</p>
+        <p><strong>Details:</strong> {{ block.data }}</p>
+        <p><small style="color: #666; word-wrap: break-word;">Block Hash: {{ block.hash }}</small></p>
+        <p><small style="color: #666; word-wrap: break-word;">Previous Hash: {{ block.previous_hash }}</small></p>
+      </div>
+      {% if not loop.last %}
+        <div style="text-align: center; font-size: 24px; margin: -10px 0;">&#x2193;</div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <hr>
+  <a href="{{ url_for('update_batch', batch_id=batch_id) }}" class="btn btn-secondary">Simulate Next Step</a>
+  <a href="{{ url_for('trace_form') }}" style="margin-left: 10px;">Trace Another</a>
+{% endblock %}
