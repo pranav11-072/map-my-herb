@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Trace a Batch{% endblock %}
+
+{% block content %}
+  <h2>Consumer: Trace Your Herb</h2>
+  <p>Enter the Batch ID found on your product to see its complete journey.</p>
+  
+  <form action="" method="GET" onsubmit="this.action = '/trace/' + this.batch_id.value; return true;">
+    <div class="form-group">
+      <label for="batch_id">Batch ID</label>
+      <input type="text" id="batch_id" name="batch_id" placeholder="Enter Batch ID" required>
+    </div>
+    <button type="submit" class="btn">Trace</button>
+  </form>
+{% endblock %}
