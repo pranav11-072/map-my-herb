@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Batch Created!{% endblock %}
+
+{% block content %}
+  <h2>Batch Created Successfully!</h2>
+  <p>Your new <strong>Batch ID is: {{ batch_id }}</strong></p>
+  <p>Print this QR code and attach it to the physical batch. Anyone who scans it will see its full history.</p>
+  
+  <div style="text-align: center; margin: 20px 0;">
+    <img src="data:image/png;base64,{{ img_data }}" alt="QR Code">
+  </div>
+  
+  <p>This code links to: <a href="{{ trace_url }}">{{ trace_url }}</a></p>
+  <hr>
+  <h3>Next Steps</h3>
+  <p>When this batch moves to the next stage (e.g., processing), you will update its status using the Batch ID.</p>
+  <a href="{{ url_for('update_batch', batch_id=batch_id) }}" class="btn">Simulate Next Step (Update Batch)</a>
+{% endblock %}
