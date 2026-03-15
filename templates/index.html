@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Map My Herb{% endblock %}
+
+{% block content %}
+  <h1>🌿 Welcome to Map My Herb</h1>
+  <p>This system provides a simulated blockchain to trace Ayurvedic herbs from the source to the final product, ensuring authenticity and quality.</p>
+  <hr>
+  <h2>Workflow:</h2>
+  <ol>
+    <li>
+      <strong>Farmer:</strong>
+      <a href="{{ url_for('add_batch') }}" class="btn">Add a New Herb Batch</a>
+    </li>
+    <li style="margin-top: 10px;">
+      <strong>Processor/Consumer:</strong>
+      <a href="{{ url_for('trace_form') }}" class="btn btn-secondary">Trace an Existing Batch</a>
+    </li>
+  </ol>
+{% endblock %}
